@@ -1,11 +1,57 @@
 // 9.1 Dynamic Array 2-3.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+//Pregunta por numeros y cada que se añade se pone en el arrey en orden
 
 #include <iostream>
+#include <string>
+using namespace std;
 
+class Array
+{
+public:
+	int* num = new int [1]{ 0 }; //Array como puntero
+	int capacidad = 1;
+
+	void resize(int newNum)
+	{
+		//Nueva capacidad
+		int new_cap = capacidad + 1;
+		//Crear nuevo array
+		int* nuevo = new int[new_cap];
+
+		//Copiar els numeros existents
+		for (int i = 0; i < capacidad; i++)
+		{
+			nuevo[i] = num[i];
+		}
+
+		//Borrar el antiguo y actualizar
+		delete[] num;
+		num = nuevo;
+		capacidad = new_cap;
+	}
+	void print()
+	{
+		cout << "\nArray:\n";
+		for (int i = 0; i <= capacidad; i++)
+		{
+			cout << num[i] << "-";
+		}
+	}
+};
 int main()
 {
-  
+	Array a;
+	int num;
+	while (true)
+	{
+		cout << "\nIntroduce un numero: "; cin >> num;
+		a.resize(num);
+		a.print();
+	}
+
+	int cap = 0;
+	
+
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
